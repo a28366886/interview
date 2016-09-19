@@ -1,0 +1,87 @@
+Bubble Sort:O(n^2)
+Hint:持續比較相鄰元素，將大的數往後移。
+
+void bubble_sort(vector<int> &arr){
+	for(int i=0;i<arr.size();i++){
+		for(int j=1;j<arr.size()-i;j++){
+			if(arr[j-1]>arr[j]){
+				std::swap(arr[j-1],arr[j]);
+			}
+		}
+	}
+}
+
+/------------------------------------------------------------/
+
+Selection Sort:
+Hint:不斷找出陣列中最小元素，並將之跟陣列中第一個元素位置交換。(共交換N次)
+
+void selection_sort(vector<int> &arr){
+	for(int i=0;i<arr.size();i++){
+		int tmp=i;
+		for(int j=i;j<arr.size();j++){
+			if(arr[j]<arr[i]){
+				tmp=j;
+			}
+		}
+		std::swap(arr[i],arr[tmp]);
+	}
+}
+
+/------------------------------------------------------------/
+
+Insertion Sort:
+Hint:將已排序陣列後第一個元素，與已排序陣列，由陣列尾端開始比較，若陣列元素較大，
+     則往後移一格位置，直到陣列元素小於等於該數，將該數放入陣列中此數之下一個位置。
+
+void inserion_sort(vector<int> &arr){
+	for(int i=1;i<arr.size();i++)
+	{
+		int tmp=arr[i];
+		for(int j=i-1;j>=0 && arr[j]>arr[i];j--){
+			arr[j+1]=arr[j];
+		}
+		arr[j+1]=tmp;
+	}
+}
+
+/------------------------------------------------------------/
+
+Binary Search:
+int binary_search(int *arr,int left,int right,int target){
+	int result=(right-left)/2,left=left,right=right;
+	if(target==arr[result]) return result;
+	else if(target>arr[result]){
+		binary_function(arr,result+1,right,target);
+	}
+	else if(target<arr[result]){
+		bidirectional_iterator(arr,left,result-1);
+	}
+	return result;
+}
+
+/------------------------------------------------------------/
+
+Fibonacci Number:
+int fibonacci_number(int n){
+	int result=1,a=0,b=1,c=1;
+	if(n==0)return 0;
+	else if(n==1)return 1;
+	while(n!=result){
+		result++;
+		c=a+b;
+		a=b;
+		b=c;
+	}
+	return c;
+}
+
+int fibonacci_number(int num){
+	int n=num;
+	if(n==0)return 0;
+	if(n==1)return 1;
+	return fibonacci_number(n-1)+fibonacci_number(n-2);
+}
+
+/------------------------------------------------------------/
+
